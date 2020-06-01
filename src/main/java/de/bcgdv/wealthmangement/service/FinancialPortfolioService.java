@@ -2,6 +2,7 @@ package de.bcgdv.wealthmangement.service;
 
 import de.bcgdv.wealthmangement.model.CustomerPortfolio;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class FinancialPortfolioService {
         return customerPortfolio;
     }
 
-    public void post(List<CustomerPortfolio> customerPortfolios) {
+    public void post(List<CustomerPortfolio> customerPortfolios, PageRequest pageRequest) {
         for (CustomerPortfolio customerPortfolio : customerPortfolios) {
             System.out.println("Updating customer portfolio for customer " + customerPortfolio.getCustomerId() +
                     " Stocks: " + customerPortfolio.getStocks() +

@@ -6,6 +6,7 @@ import de.bcgdv.wealthmangement.exception.StrategyNotFoundException;
 import de.bcgdv.wealthmangement.model.CustomerPortfolio;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -24,7 +25,7 @@ public class RebalancingService {
         CustomerPortfolio customerPortfolio = financialPortfolioService.get();
         StrategyEntity strategyEntity = validateCurrentStrategy(customerEntity);
         CustomerPortfolio newCustomerPortfolio = getCustomerPortfolio(customerId, customerPortfolio, strategyEntity);
-        financialPortfolioService.post(Collections.singletonList(newCustomerPortfolio));
+        financialPortfolioService.post(Collections.singletonList(newCustomerPortfolio), PageRequest.of(1,10));
         return newCustomerPortfolio;
     }
 
