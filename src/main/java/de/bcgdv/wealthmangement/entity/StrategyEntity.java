@@ -19,7 +19,7 @@ public class StrategyEntity {
 
     private Integer maxYearsToRetirement;
 
-    private Integer stocksPercentage; //TODO: change this to Double?
+    private Integer stocksPercentage;
 
     private Integer cashPercentage;
 
